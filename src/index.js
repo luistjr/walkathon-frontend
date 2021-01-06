@@ -5,6 +5,9 @@ const username = document.querySelector(".div2")
 const reservations = document.querySelector(".reservations")
 const li = document.createElement("li")
 const form = document.querySelector("#username-form")
+const createAppointmentBtn = document.querySelector("#create-appointment-button")
+const updateAppintmentBtn = document.querySelector('#update-appointment-button')
+// const applicationForm = document.querySelector('#appointment-form')
 
 
 
