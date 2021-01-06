@@ -11,7 +11,6 @@ const updateAppintmentBtn = document.querySelector('#update-appointment-button')
 
 
 
-
 /* Event Listeners */
 form.addEventListener('submit', function(event){
     event.preventDefault()
@@ -19,6 +18,8 @@ form.addEventListener('submit', function(event){
     event.target.reset()
     console.log(username)
 })
+
+
 
 /* CONDITIONAL 
 
