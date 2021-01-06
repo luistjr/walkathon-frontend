@@ -14,6 +14,7 @@ form.addEventListener('submit', function(event){
     event.preventDefault()
     const username = event.target.username.value
     event.target.reset()
+    console.log(username)
 })
 
 /* CONDITIONAL 
@@ -42,9 +43,14 @@ const getOneUser = id => {
 }
 
 
+/* fetch all dogs
+get back response of dog objects
+foreach on Dog Objs
+for reach with Dogs Name 
+append that to datalist 
+
 
 /* Initialize Action */
-getOneUser(1)
 
 
 /* ASYNC OPTIONN */
