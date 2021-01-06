@@ -5,7 +5,9 @@ const username = document.querySelector(".div2")
 const reservations = document.querySelector(".reservations")
 const li = document.createElement("li")
 const form = document.querySelector("#username-form")
-
+const createAppointmentBtn = document.querySelector("#create-appointment-button")
+const updateAppintmentBtn = document.querySelector('#update-appointment-button')
+// const applicationForm = document.querySelector('#appointment-form')
 
 
 
@@ -15,6 +17,8 @@ form.addEventListener('submit', function(event){
     const username = event.target.username.value
     event.target.reset()
 })
+
+
 
 /* CONDITIONAL 
 
@@ -44,7 +48,7 @@ const getOneUser = id => {
 
 
 /* Initialize Action */
-getOneUser(1)
+getOneUser(15)
 
 
 /* ASYNC OPTIONN */
