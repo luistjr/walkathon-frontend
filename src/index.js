@@ -4,13 +4,31 @@ const dogImage = document.querySelector("#dog-image")
 const username = document.querySelector(".div2")
 const reservations = document.querySelector(".reservations")
 const li = document.createElement("li")
+const form = document.querySelector("#username-form")
+
+
+
+
+/* Event Listeners */
+form.addEventListener('submit', function(event){
+    event.preventDefault()
+    const username = event.target.username.value
+    event.target.reset()
+})
+
+/* CONDITIONAL 
+
+if username matches username in database, then provide access to data
+
+else prompt with create a user form 
 
 
 /* RENDER FUNCTIONS */
 
 const renderUserDetails = userObj => {
-    username.textContent = userObj.name
-    console.log(userObj.name)
+    // username.textContent = userObj.name
+    userObj.appointments
+    console.log(userObj.appointments[0].time)
 }
 
 /* FETCH FUNCTIONNS */
@@ -22,6 +40,8 @@ const getOneUser = id => {
             renderUserDetails(userObj)
         })
 }
+
+
 
 /* Initialize Action */
 getOneUser(1)

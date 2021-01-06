@@ -9,34 +9,46 @@
 </head>
 <body>
     <header>
-        <h2 class="div2">Site Title</h2>
+        <h2>Walk-A-Pup</h2>
       </header>
-      <nav class="reservations">
-        <ul>
-          <li>Recipe 1</li>
-          <li>Recipe 2</li>
-          <li>Recipe 3</li>
-        </ul>
-      </nav>
       <main>
-        <img id="dog-image" src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" alt="placeholder" style="max-width: 500px;" />
-        <form>
+        <img id="dog-image" src="https://vetstreet.brightspotcdn.com/dims4/default/5298792/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F3d%2F174bd0a0d511e0a2380050568d634f%2Ffile%2FFrench-Bulldog-5-645mk062111.jpg" alt="placeholder" style="max-width: 500px;" />
+        <form id='username-form'>
           <label for="username">Username</label><br>
-          <input type="text" id="username" name="username"><br>
-          <input type="submit" value="Submit">
+          <input type="text" id="username" name="username">
+          <input id="submit-btn" type="submit" value="Submit">
         </form> 
-        <h1>Recipe Title</h1>
-        <div class="info">
-          <h3>Author Name</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora tempore ipsam a libero aliquam est, maxime officia et quisquam sint neque iusto reprehenderit aliquid dignissimos deserunt odit atque culpa nisi!</p>
-        </div>
-        <hr />
-        <h3>Ingredients</h3>
+        <br />
+        <form>
+          <label for="dogs">Choose Your Dog</label>
+          <br />
+          <br />
+          <input list="dogs" name="dogs">
+          <datalist id="dogs">
+            <option value="Dog 1">
+            <option value="Dog 2">
+          
+          </datalist>
+          <input type="submit">
+        </form>
+
+        <h2>Current Appointments</h2>
         <ul>
-          <li>Ingredient 1</li>
-          <li>Ingredient 2</li>
-          <li>Ingredient 3</li>
+            <li>Appointment 1</li>
+              <ul>
+                <li>Date</li>
+                <li>Time</li> 
+              </ul> 
+            <li>Appointment 2</li>
+            <ul>
+              <li>Date</li>
+              <li>Time</li> 
+            </ul> 
         </ul>
+
+        <button type="button">Create Appointment</button>
+        <button type="button">Update Appointment</button>
+      
       </main>
     
 </body>
