@@ -41,6 +41,20 @@ const url = 'http://localhost:3000/api/v1/dogs'
 /*Rendering Dogs */
 
 
+
+fetch(url)
+    .then(response => response.json())
+    .then(dogArray => renderDogOptions(dogArray))
+
+function renderDogOptions(dogs){
+    console.log(dogs)
+}
+
+
+
+
+
+
 const dogCollection = document.querySelector('#dog-collection')
 
 
@@ -66,10 +80,11 @@ function renderOneDog(dogObj) {
     <p>${dogObj.comment}</p>`
 
     dogCollection.append(div)
-
+   
 }
 
 
+const updateCommentForm = document.querySelector('.update-dog-comment-form')
 
 
 
@@ -119,14 +134,3 @@ newDogForm.addEventListener('submit', (event) => {
             renderOneDog(newDogObj)
         })
 })
-
-
-
-/* ASYNC OPTIONN */
-
-// const getOneUser = async (id) => {
-    //     const url = `http://localhost:3000/api/v1/users/${id}`
-    //     const response = await fetch(url)
-    //     const userObj = await response.json()
-    //     console.log(userObj)
-    // }
