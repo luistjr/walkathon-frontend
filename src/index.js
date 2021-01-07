@@ -41,17 +41,10 @@ else prompt with create a user form
 const url = 'http:/localhost:3000/api/v1/dogs'
 
 
-/* GET Fetch Request */
-fetch(url)
-.then(response => response.json())
-.then(dogArray => renderAllDogs(dogArray))
-
 /*Rendering Dogs */
 
-//Render one dog
 
-
-const dogCollection = document.querySelector('dog-collection')
+const dogCollection = document.querySelector('#dog-collection')
 
 function renderOneDog(dogObj) {
     const div = document.createElement('div')
@@ -64,15 +57,21 @@ function renderOneDog(dogObj) {
     <p>${dogObj.comment}</p>`
     
     dogCollection.append(div)
+    
+    
+    function renderAllDogs(dogArray) {
+        dogArray.forEach((dog) => {
+            renderOneDog(dog)
+        })
+    }
+
+    fetch(url)
+    .then(response => response.json())
+    .then(dogArray => renderAllDogs(dogArray))
 }
 
-// Render all the doggos
 
-function renderAllDogs(dogArray) {
-    dogArray.forEach((dog) => {
-        renderOneDog
-    })
-}
+
 
 
 
@@ -106,22 +105,22 @@ newDogForm.addEventListener('submit', (event) => {
         comment: dogComment,
         img_url: dogPicture
     }
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify(newDogObj)
+    })
+    .then(response => response.json())
+    .then(newDogObj => {
+        renderOneDog(newDogObj)
+    })
 })
 
 
 
-fetch(url, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-    },
-    body: JSON.stringify(newDogObj)
-})
-.then(response => response.json())
-.then(newDogObj => {
-    renderOneDog(newDogObj)
-})
 
 
 
