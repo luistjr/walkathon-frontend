@@ -7,9 +7,6 @@ const form = document.querySelector("#username-form")
 const createAppointmentBtn = document.querySelector("#create-appointment-button")
 // const applicationForm = document.querySelector('#appointment-form')
 
-
-
-
 /* CONDITIONAL 
 
 if username matches username in database, then provide access to data
@@ -38,13 +35,25 @@ else prompt with create a user form
 /********************* David's doggo time ********************/
 
 /* FETCH REQUEST VARIABLES */
-const url = 'http:/localhost:3000/api/v1/dogs'
+const url = 'http://localhost:3000/api/v1/dogs'
 
 
 /*Rendering Dogs */
 
 
 const dogCollection = document.querySelector('#dog-collection')
+
+
+function renderAllDogs(dogArray) {
+    dogArray.forEach((dog) => {
+        renderOneDog(dog)
+    })
+}
+
+fetch(url)
+    .then(response => response.json())
+    .then(dogArray => renderAllDogs(dogArray))
+
 
 function renderOneDog(dogObj) {
     const div = document.createElement('div')
@@ -55,19 +64,9 @@ function renderOneDog(dogObj) {
     <h2>${dogObj.name}</h2>
     <p>${dogObj.breed}</p>
     <p>${dogObj.comment}</p>`
-    
-    dogCollection.append(div)
-    
-    
-    function renderAllDogs(dogArray) {
-        dogArray.forEach((dog) => {
-            renderOneDog(dog)
-        })
-    }
 
-    fetch(url)
-    .then(response => response.json())
-    .then(dogArray => renderAllDogs(dogArray))
+    dogCollection.append(div)
+
 }
 
 
@@ -78,7 +77,7 @@ function renderOneDog(dogObj) {
 /* adding new dog */
 let addDog = false;
 
-const addDogBtn = document.querySelector('#new-dog-btn')
+const addDogBtn = document.querySelector('.submit')
 const dogFormContainer = document.querySelector(".container")
 
 addDogBtn.addEventListener("click", () => {
@@ -93,34 +92,33 @@ addDogBtn.addEventListener("click", () => {
 const newDogForm = document.querySelector('.add-dog-form')
 
 newDogForm.addEventListener('submit', (event) => {
-    event.preventDefault
+    event.preventDefault()
     const dogName = event.target.name.value
     const dogBreed = event.target.breed.value
     const dogComment = event.target.comment.value
-    const dogPicture = event.target.img_url.value
-    
+    const dogPicture = event.target.image.value
+
+    console.log(event.target)
+
     const newDogObj = {
         name: dogName,
         breed: dogBreed,
         comment: dogComment,
         img_url: dogPicture
     }
-    fetch(url, {
+
+    fetch('http://localhost:3000/api/v1/dogs', {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(newDogObj)
     })
-    .then(response => response.json())
-    .then(newDogObj => {
-        renderOneDog(newDogObj)
-    })
+        .then(response => response.json())
+        .then(newDogObj => {
+            renderOneDog(newDogObj)
+        })
 })
-
-
-
 
 
 
