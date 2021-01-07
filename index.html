@@ -13,11 +13,54 @@
       </header>
       <main>
         <img id="dog-image" src="https://vetstreet.brightspotcdn.com/dims4/default/5298792/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F3d%2F174bd0a0d511e0a2380050568d634f%2Ffile%2FFrench-Bulldog-5-645mk062111.jpg" alt="placeholder" style="max-width: 500px;" />
-        <form id='username-form'>
-          <label for="username">Username</label><br>
-          <input type="text" id="username" name="username">
-          <input id="submit-btn" type="submit" value="Submit">
-        </form> 
+        
+        <div class="container">
+          <form class="add-dog-form">
+            <h3>Add a new Doggo</h3>
+    
+            <input
+              type="text"
+              name="name"
+              value=""
+              placeholder="What's your doggo's name"
+              class="input-text"
+            />
+            <input
+              type="text"
+              name="breed"
+              value=""
+              placeholder="What kind of dog is this?"
+              class="input-text"
+            />
+            <input
+              type="text"
+              name="comment"
+              value=""
+              placeholder="Tell us about your pup"
+              class="input-text"
+            />
+            <br />
+            <input
+              type="text"
+              name="image"
+              value=""
+              placeholder="Let's see that pupper"
+              class="input-text"
+            />
+            <br />
+            <input
+              type="submit"
+              name="submit"
+              value="Create New Dog"
+              class="submit"
+            />
+          </form>
+        </div>
+        <p style="text-align:center">
+        <button id="new-dog-btn">Add this angel</button>
+        </p>
+    
+        <div id="dog-collection"></div>
         <br />
         <form>
           <label for="dogs">Choose Your Dog</label>
