@@ -10,6 +10,7 @@ const createAppointmentBtn = document.querySelector("#create-appointment-button"
 
 /* FETCH REQUEST VARIABLES */
 const url = 'http://localhost:3000/api/v1/dogs'
+const appointmentUrl = 'http://localhost:3000/api/v1/appointments'
 
 
 /*Rendering Dogs */
@@ -36,6 +37,10 @@ fetch(url)
 
 function renderOneDog(dogObj) {
     const div = document.createElement('div')
+    const lis = dogObj.appointments.map(appointment => {
+    return `<li>${appointment.date}</li>
+    <li>${appointment.time}`
+    })
     div.className = 'card'
     div.dataset.id = dogObj.id
     div.innerHTML = `
@@ -43,12 +48,13 @@ function renderOneDog(dogObj) {
     <h2>${dogObj.name}</h2>
     <p>${dogObj.breed}</p>
     <p>${dogObj.comment}</p>
-    <h2> appointments`
-    
+    ${lis.join("")}
+    `
+
     dogCollection.append(div)
-    
-    
+
 }
+
 
 
 const updateCommentForm = document.querySelector('.update-dog-comment-form')
@@ -60,6 +66,7 @@ function renderDogOptions(dogs){
         option.value = dog.id
         option.textContent = dog.name
         selectDogs.append(option)
+
     })
     
     
@@ -81,7 +88,7 @@ updateCommentForm.addEventListener('submit', event => {
 })
 
 const updateComment = (updatedObj) => {
-    fetch(`http://localhost:3000/api/v1/dogs/64`, {
+    fetch(`http://localhost:3000/api/v1/dogs/74`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -141,30 +148,33 @@ newDogForm.addEventListener('submit', (event) => {
 
 /********* Time for walkies **********/
 
-const appointmentBtn = document.querySelector('#create-appointment-button')
+fetch(url)
+.then(r => r.json())
+.then(dogArray => renderDogOptionsForIngredients(dogArray))
 
-appointmentBtn.addEventListener('submit', e => {
-    e.preventDefault()
-    const appointmentId = '64'
-})
+function renderDogOptionsForIngredients(dogs){
+    const selectDogs2 = document.querySelector('#dogs-2')
+    dogs.forEach((dog) => {
+        const option = document.createElement('option')
+        option.value = dog.id
+        option.textContent = dog.name
+        selectDogs2.append(option)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        const createAppointmentForm = document.querySelector('.create-appointment-form')
+        
+        createAppointmentForm.addEventListener("submit", event => {
+            event.preventDefault()
+            const appointmentDate = document.getElementsByName('date')
+            const appointmentTime = document.getElementsByName('time')
+            debugger
+            const commentValue = comment.item(1)
+    
+            const updateObj = {
+                comment: commentValue.value 
+            
+            }
+        })
+    
+    })
+}
