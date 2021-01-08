@@ -159,22 +159,36 @@ function renderDogOptionsForIngredients(dogs){
         option.value = dog.id
         option.textContent = dog.name
         selectDogs2.append(option)
-
+        const date = dog.appointments.map(appointment =>{
+            appointment.date
+        })
         
         const createAppointmentForm = document.querySelector('.create-appointment-form')
         
         createAppointmentForm.addEventListener("submit", event => {
             event.preventDefault()
-            const appointmentDate = document.getElementsByName('date')
-            const appointmentTime = document.getElementsByName('time')
-            debugger
-            const commentValue = comment.item(1)
-    
-            const updateObj = {
-                comment: commentValue.value 
-            
-            }
+         
         })
-    
+        
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
